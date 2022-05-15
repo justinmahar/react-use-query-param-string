@@ -1,5 +1,5 @@
 <h2 align="center">
-  ❔ useQueryParamString Hook
+  ❔ react-use-query-param-string
 </h2>
 <h3 align="center">
   React hook for easily getting and setting query param strings.
@@ -36,29 +36,34 @@ If you would like to join others in showing support for the development of this 
 
 ## Overview
 
-This section will contain an overview so people can have a high-level understanding of the project.
+This hook allows you to use a query param string the same way you'd use regular React state (i.e. via React.useState). 
+
+You can also use the getQueryParams() and setQueryParams() functions to get/set query params yourself.
 
 ### Features include:
 
-- **🚀 List your features, use fun [emojis](https://emojipedia.org/search/?q=rocket)**
-  - Give a little more info on each feature or mention benefits.
+- **👍 Read and set query params with ease**
+  - Use query param strings just like you would React state
+- **🙅‍♂️ No Router interference**
+  - Uses `window` functions that don't interfere with router frameworks.
+- **💁‍♀️ Convenience functions available**
+  - Use `getQueryParams()` or `setQueryParams()` to get/set query params yourself.
 
 ## Installation
 
 ```
-npm i react-kindling
+npm i react-use-query-param-string
 ```
 
 ## Quick Start
 
-This section will contain a copy/paste example so people can get started quickly.
-
 ```jsx
-import { Example } from 'react-kindling';
+import { useQueryParamString } from 'react-use-query-param-string';
 ```
 
 ```jsx
-<Example label="Example Component" />
+// Will use query param `q` and have a default value of empty string.
+const [searchText, setSearchText] = useQueryParamString('q', '');
 ```
 
 ## TypeScript
@@ -77,10 +82,10 @@ Feel free to submit a pull request for bugs or additions, and make sure to updat
 
 For major changes, open an issue first to discuss what you'd like to change.
 
-## ⭐ Found It Helpful? [Star It!](https://github.com/justinmahar/react-kindling/stargazers)
+## ⭐ Found It Helpful? [Star It!](https://github.com/justinmahar/react-use-query-param-string/stargazers)
 
-If you found this project helpful, let the community know by giving it a [star](https://github.com/justinmahar/react-kindling/stargazers): [👉⭐](https://github.com/justinmahar/react-kindling/stargazers)
+If you found this project helpful, let the community know by giving it a [star](https://github.com/justinmahar/react-use-query-param-string/stargazers): [👉⭐](https://github.com/justinmahar/react-use-query-param-string/stargazers)
 
 ## License
 
-See [LICENSE.md](https://justinmahar.github.io/react-kindling/?path=/story/license--page).
+See [LICENSE.md](https://justinmahar.github.io/react-use-query-param-string/?path=/story/license--page).

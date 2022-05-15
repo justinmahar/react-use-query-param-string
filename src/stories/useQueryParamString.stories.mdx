@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Hooks/useQueryParamString" />
+
+<h1>useQueryParamString</h1>
+
+## Description
+
+Use this hook to get and set a query param string. You can use this hook the same way you'd use `React.useState()`.
+
+You can also use the `getQueryParams()` and `setQueryParams()` functions to get/set query params yourself.
+
+## Usage
+
+```jsx
+import { useQueryParamString } from 'react-use-query-param-string';
+```
+
+```jsx
+// Will use query param `q` and have a default value of empty string.
+const [searchText, setSearchText] = useQueryParamString('q', '');
+```
+
+## Signature
+
+`useQueryParamString(key: string, defaultValue: string) => [value, setValue]`
+
+### Props
+
+| Prop         | Type     | Description                                                  |
+| ------------ | -------- | ------------------------------------------------------------ |
+| key          | `string` | The key for the query param.                                 |
+| defaultValue | `string` | Default value when no string is present in the query params. |
+
+### Return
+
+The hook returns an [array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) containing:
+
+| Index | Name     | Type                     | Description                        |
+| ----- | -------- | ------------------------ | ---------------------------------- |
+| 0     | value    | `string`                 | The query param string value       |
+| 1     | setValue | `(value: string) ⇒ void` | A setter for the query param value |
