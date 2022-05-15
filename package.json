@@ -27,7 +27,19 @@
   "bugs": {
     "url": "https://github.com/justinmahar/react-use-query-param-string/issues"
   },
-  "keywords": [],
+  "keywords": [
+    "use query param",
+    "use query params",
+    "use-query-param",
+    "use-query-params",
+    "query",
+    "string",
+    "param",
+    "params",
+    "react",
+    "hook",
+    "hooks"
+  ],
   "peerDependencies": {
     "react": "^16 || ^17 || ^18",
     "react-dom": "^16 || ^17 || ^18"
