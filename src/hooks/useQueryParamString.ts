@@ -1,8 +1,9 @@
 import React from 'react';
 import * as queryString from 'query-string';
 
-export function useQueryParamString(key: string, initial: string): [string, (val: string) => void] {
-  const [value, setStateValue] = React.useState<string>(initial);
+export function useQueryParamString(key: string, initial: string): [string, (val: string) => void, boolean] {
+  const [initialized, setInitialized] = React.useState(false);
+  const [value, setStateValue] = React.useState(initial);
 
   const setValue = React.useCallback(
     (val: string) => {
@@ -13,12 +14,15 @@ export function useQueryParamString(key: string, initial: string): [string, (val
   );
 
   React.useEffect(() => {
-    const queryParams = getQueryParams();
-    const v = queryParams[key];
-    setStateValue(typeof v === 'string' ? v : initial);
-  }, []); // Only run once
+    if (!initialized) {
+      const queryParams = getQueryParams();
+      const v = queryParams[key];
+      setStateValue(typeof v === 'string' ? v : initial);
+      setInitialized(true);
+    }
+  }, [initial, initialized, key]);
 
-  return [value, setValue];
+  return [value, setValue, initialized];
 }
 
 /**

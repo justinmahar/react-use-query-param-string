@@ -3,7 +3,7 @@
   "version": "1.0.5",
   "author": "Justin Mahar <contact@justinmahar.com>",
   "description": "React hook for easily getting and setting query param strings.",
-  "homepage": "https://justinmahar.github.io/react-kindling/",
+  "homepage": "https://justinmahar.github.io/react-use-query-param-string/",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {

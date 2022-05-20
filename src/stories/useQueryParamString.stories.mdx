@@ -18,7 +18,8 @@ import { useQueryParamString } from 'react-use-query-param-string';
 
 ```jsx
 // Will use query param `q` and have a default value of empty string.
-const [searchText, setSearchText] = useQueryParamString('q', '');
+// The `initialized` value will be true after the value has been read from the query params.
+const [searchText, setSearchText, initialized] = useQueryParamString('q', '');
 ```
 
 ## Signature
@@ -36,7 +37,49 @@ const [searchText, setSearchText] = useQueryParamString('q', '');
 
 The hook returns an [array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) containing:
 
-| Index | Name     | Type                     | Description                        |
-| ----- | -------- | ------------------------ | ---------------------------------- |
-| 0     | value    | `string`                 | The query param string value       |
-| 1     | setValue | `(value: string) ⇒ void` | A setter for the query param value |
+| Index | Name        | Type                     | Description                                                                |
+| ----- | ----------- | ------------------------ | -------------------------------------------------------------------------- |
+| 0     | value       | `string`                 | The query param string value                                               |
+| 1     | setValue    | `(value: string) ⇒ void` | A setter for the query param value                                         |
+| 2     | initialized | `boolean`                | True after the value has been read from the query params. False otherwise. |
+
+## Utility Functions
+
+You can use the `getQueryParams()` and `setQueryParams()` functions to get/set query params yourself.
+
+### `getQueryParams`
+
+Retrieve all decoded query params as a ParsedQuery map.
+
+#### Signature
+
+`getQueryParams() => queryString.ParsedQuery`
+
+#### Usage
+
+```jsx
+import { getQueryParams } from 'react-use-query-param-string';
+```
+
+```jsx
+const params = getQueryParams();
+console.log(params.myParam);
+```
+
+### `setQueryParams`
+
+Set the query params via a ParsedQuery map.
+
+#### Signature
+
+`setQueryParams(query: queryString.ParsedQuery) => void`
+
+#### Usage
+
+```jsx
+import { setQueryParams } from 'react-use-query-param-string';
+```
+
+```jsx
+setQueryParams({ myParam: 'hey yo!' });
+```
