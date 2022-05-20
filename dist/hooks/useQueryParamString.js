@@ -26,17 +26,21 @@ exports.setQueryParams = exports.getQueryParams = exports.useQueryParamString = 
 const react_1 = __importDefault(require("react"));
 const queryString = __importStar(require("query-string"));
 function useQueryParamString(key, initial) {
+    const [initialized, setInitialized] = react_1.default.useState(false);
     const [value, setStateValue] = react_1.default.useState(initial);
     const setValue = react_1.default.useCallback((val) => {
         setStateValue(val);
         setQueryParams(Object.assign(Object.assign({}, getQueryParams()), { [key]: val }));
     }, [key]);
     react_1.default.useEffect(() => {
-        const queryParams = getQueryParams();
-        const v = queryParams[key];
-        setStateValue(typeof v === 'string' ? v : initial);
-    }, []); // Only run once
-    return [value, setValue];
+        if (!initialized) {
+            const queryParams = getQueryParams();
+            const v = queryParams[key];
+            setStateValue(typeof v === 'string' ? v : initial);
+            setInitialized(true);
+        }
+    }, [initial, initialized, key]);
+    return [value, setValue, initialized];
 }
 exports.useQueryParamString = useQueryParamString;
 /**
