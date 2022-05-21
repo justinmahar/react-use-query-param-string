@@ -1,8 +1,12 @@
 import React from 'react';
 import * as queryString from 'query-string';
+import { EventEmitter } from 'events';
+
+export const queryParamsEventEmitter = new EventEmitter();
 
 export function useQueryParamString(key: string, initial: string): [string, (val: string) => void, boolean] {
   const [initialized, setInitialized] = React.useState(false);
+  const [updateTime, setUpdateTime] = React.useState(0);
   const [value, setStateValue] = React.useState(initial);
 
   const setValue = React.useCallback(
@@ -13,14 +17,34 @@ export function useQueryParamString(key: string, initial: string): [string, (val
     [key],
   );
 
+  const fetchValue = React.useCallback(() => {
+    const queryParams = getQueryParams();
+    const v = queryParams[key];
+    setStateValue(typeof v === 'string' ? v : initial);
+  }, [initial, key]);
+
   React.useEffect(() => {
     if (!initialized) {
-      const queryParams = getQueryParams();
-      const v = queryParams[key];
-      setStateValue(typeof v === 'string' ? v : initial);
+      fetchValue();
       setInitialized(true);
     }
-  }, [initial, initialized, key]);
+  }, [fetchValue, initial, initialized, key]);
+
+  React.useEffect(() => {
+    if (updateTime > 0) {
+      fetchValue();
+    }
+  }, [fetchValue, updateTime]);
+
+  React.useEffect(() => {
+    const updateListener = () => {
+      setUpdateTime(Date.now());
+    };
+    queryParamsEventEmitter.addListener('update', updateListener);
+    return () => {
+      queryParamsEventEmitter.removeListener('update', updateListener);
+    };
+  }, []);
 
   return [value, setValue, initialized];
 }
@@ -46,5 +70,6 @@ export function setQueryParams(query: queryString.ParsedQuery): void {
       '',
       `${window.location.pathname}?${queryString.stringify(query)}`,
     );
+    queryParamsEventEmitter.emit('update');
   }
 }
