@@ -22,24 +22,44 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.setQueryParams = exports.getQueryParams = exports.useQueryParamString = void 0;
+exports.setQueryParams = exports.getQueryParams = exports.useQueryParamString = exports.queryParamsEventEmitter = void 0;
 const react_1 = __importDefault(require("react"));
 const queryString = __importStar(require("query-string"));
+const events_1 = require("events");
+exports.queryParamsEventEmitter = new events_1.EventEmitter();
 function useQueryParamString(key, initial) {
     const [initialized, setInitialized] = react_1.default.useState(false);
+    const [updateTime, setUpdateTime] = react_1.default.useState(0);
     const [value, setStateValue] = react_1.default.useState(initial);
     const setValue = react_1.default.useCallback((val) => {
         setStateValue(val);
         setQueryParams(Object.assign(Object.assign({}, getQueryParams()), { [key]: val }));
     }, [key]);
+    const fetchValue = react_1.default.useCallback(() => {
+        const queryParams = getQueryParams();
+        const v = queryParams[key];
+        setStateValue(typeof v === 'string' ? v : initial);
+    }, [initial, key]);
     react_1.default.useEffect(() => {
         if (!initialized) {
-            const queryParams = getQueryParams();
-            const v = queryParams[key];
-            setStateValue(typeof v === 'string' ? v : initial);
+            fetchValue();
             setInitialized(true);
         }
-    }, [initial, initialized, key]);
+    }, [fetchValue, initial, initialized, key]);
+    react_1.default.useEffect(() => {
+        if (updateTime > 0) {
+            fetchValue();
+        }
+    }, [fetchValue, updateTime]);
+    react_1.default.useEffect(() => {
+        const updateListener = () => {
+            setUpdateTime(Date.now());
+        };
+        exports.queryParamsEventEmitter.addListener('update', updateListener);
+        return () => {
+            exports.queryParamsEventEmitter.removeListener('update', updateListener);
+        };
+    }, []);
     return [value, setValue, initialized];
 }
 exports.useQueryParamString = useQueryParamString;
@@ -60,6 +80,7 @@ exports.getQueryParams = getQueryParams;
 function setQueryParams(query) {
     if (typeof window !== 'undefined') {
         window.history.replaceState(window.history.state, '', `${window.location.pathname}?${queryString.stringify(query)}`);
+        exports.queryParamsEventEmitter.emit('update');
     }
 }
 exports.setQueryParams = setQueryParams;

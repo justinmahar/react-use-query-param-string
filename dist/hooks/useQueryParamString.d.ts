@@ -1,4 +1,7 @@
+/// <reference types="node" />
 import * as queryString from 'query-string';
+import { EventEmitter } from 'events';
+export declare const queryParamsEventEmitter: EventEmitter;
 export declare function useQueryParamString(key: string, initial: string): [string, (val: string) => void, boolean];
 /**
  * Retrieve a map of the decoded query params from `window.location.search`.
