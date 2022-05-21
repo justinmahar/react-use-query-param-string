@@ -105,11 +105,12 @@ Set the query params via a ParsedQuery map.
 #### Usage
 
 ```jsx
-import { setQueryParams } from 'react-use-query-param-string';
+import { getQueryParams, setQueryParams } from 'react-use-query-param-string';
 ```
 
 ```jsx
-setQueryParams({ myParam: 'hey yo!' });
+const params = getQueryParams();
+setQueryParams({ ...params, myParam: 'hey yo!' });
 ```
 
 ## TypeScript
