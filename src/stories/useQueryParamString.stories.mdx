@@ -83,3 +83,25 @@ import { setQueryParams } from 'react-use-query-param-string';
 ```jsx
 setQueryParams({ myParam: 'hey yo!' });
 ```
+
+## State Synchronization and Event Emitter
+
+This hook uses an event emitter to synchronize state across multiple components.
+
+When state is updated, the event `"update"` is fired on the emitter. This causes all hooks to fetch the latest value from the query params to stay in sync.
+
+To access the emitter directly, you can import it like so:
+
+```jsx
+import { queryParamsEventEmitter } from 'react-use-query-param-string';
+```
+
+And subscribe for the update event like so:
+
+```jsx
+const updateListener = () => {
+  console.log('Query params updated');
+};
+
+queryParamsEventEmitter.addListener('update', updateListener);
+```

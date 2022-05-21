@@ -44,6 +44,8 @@ You can also use the getQueryParams() and setQueryParams() functions to get/set 
 
 - **👍 Read and set query params with ease**
   - Use query param strings just like you would React state
+- **🔄 State syncing across components**
+  - Hooks stay synchronized even when used in multiple components.
 - **🙅‍♂️ No Router interference**
   - Uses `window` functions that don't interfere with router frameworks.
 - **💁‍♀️ Convenience functions available**
