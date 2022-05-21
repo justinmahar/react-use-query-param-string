@@ -22,7 +22,7 @@ Read the **[official documentation](https://justinmahar.github.io/react-use-quer
 
 ## Donate 
 
-This project is the result of 100s of hours of work and I really hope it saves you hours of your own precious time.
+This project is the result of countless of hours of work and I really hope it saves you hours of your own precious time.
 
 If you would like to join others in showing support for the development of this project, then please feel free to buy me a coffee.
 
@@ -65,7 +65,8 @@ import { useQueryParamString } from 'react-use-query-param-string';
 
 ```jsx
 // Will use query param `q` and have a default value of empty string.
-const [searchText, setSearchText] = useQueryParamString('q', '');
+// `initialized` will be true after the value has been read from the query params.
+const [searchText, setSearchText, initialized] = useQueryParamString('q', '');
 ```
 
 ## TypeScript
