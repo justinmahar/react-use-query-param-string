@@ -4,17 +4,31 @@ import { EventEmitter } from 'events';
 
 export const queryParamsEventEmitter = new EventEmitter();
 
-export function useQueryParamString(key: string, initial: string): [string, (val: string) => void, boolean] {
+export function useQueryParamString(
+  key: string,
+  initial: string,
+  clearOnInitial = true,
+): [string, (val: string) => void, boolean, () => void] {
   const [initialized, setInitialized] = React.useState(false);
   const [updateTime, setUpdateTime] = React.useState(0);
   const [value, setStateValue] = React.useState(initial);
 
+  const clear = React.useCallback(() => {
+    const currParams = getQueryParams();
+    delete currParams[key];
+    setQueryParams(currParams);
+  }, [key]);
+
   const setValue = React.useCallback(
     (val: string) => {
       setStateValue(val);
-      setQueryParams({ ...getQueryParams(), [key]: val });
+      if (clearOnInitial && val === initial) {
+        clear();
+      } else {
+        setQueryParams({ ...getQueryParams(), [key]: val });
+      }
     },
-    [key],
+    [clear, clearOnInitial, initial, key],
   );
 
   const fetchValue = React.useCallback(() => {
@@ -46,7 +60,7 @@ export function useQueryParamString(key: string, initial: string): [string, (val
     };
   }, []);
 
-  return [value, setValue, initialized];
+  return [value, setValue, initialized, clear];
 }
 
 /**
