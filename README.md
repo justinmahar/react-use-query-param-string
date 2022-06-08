@@ -69,49 +69,7 @@ import { useQueryParamString } from 'react-use-query-param-string';
 const [searchText, setSearchText, initialized] = useQueryParamString('q', '');
 ```
 
-See the [useQueryParamString docs](https://justinmahar.github.io/react-use-query-param-string/?path=/story/hooks-usequeryparamstring--page) for more usage details.
-
-## Utility Functions
-
-You can use the `getQueryParams()` and `setQueryParams()` functions to get/set query params yourself.
-
-### `getQueryParams`
-
-Retrieve all decoded query params as a ParsedQuery map.
-
-#### Signature
-
-`getQueryParams() => queryString.ParsedQuery`
-
-#### Usage
-
-```jsx
-import { getQueryParams } from 'react-use-query-param-string';
-```
-
-```jsx
-const params = getQueryParams();
-console.log(params);
-```
-
-### `setQueryParams`
-
-Set the query params via a ParsedQuery map.
-
-#### Signature
-
-`setQueryParams(query: queryString.ParsedQuery) => void`
-
-#### Usage
-
-```jsx
-import { getQueryParams, setQueryParams } from 'react-use-query-param-string';
-```
-
-```jsx
-const params = getQueryParams();
-setQueryParams({ ...params, myParam: 'hey yo!' });
-```
+See the [useQueryParamString docs](https://justinmahar.github.io/react-use-query-param-string/?path=/story/hooks-usequeryparamstring--page) for more usage details, including static functions.
 
 ## TypeScript
 
