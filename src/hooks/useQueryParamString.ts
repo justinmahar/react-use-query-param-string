@@ -6,43 +6,41 @@ export const queryParamsEventEmitter = new EventEmitter();
 
 export function useQueryParamString(
   key: string,
-  initial: string,
-  clearOnInitial = true,
+  defaultValue: string,
+  clearOnDefault = true,
 ): [string, (val: string) => void, boolean, () => void] {
   const [initialized, setInitialized] = React.useState(false);
   const [updateTime, setUpdateTime] = React.useState(0);
-  const [value, setStateValue] = React.useState(initial);
+  const [value, setStateValue] = React.useState(defaultValue);
 
   const clear = React.useCallback(() => {
-    const currParams = getQueryParams();
-    delete currParams[key];
-    setQueryParams(currParams);
+    clearQueryParam(key);
   }, [key]);
 
   const setValue = React.useCallback(
     (val: string) => {
       setStateValue(val);
-      if (clearOnInitial && val === initial) {
+      if (clearOnDefault && val === defaultValue) {
         clear();
       } else {
         setQueryParams({ ...getQueryParams(), [key]: val });
       }
     },
-    [clear, clearOnInitial, initial, key],
+    [clear, clearOnDefault, defaultValue, key],
   );
 
   const fetchValue = React.useCallback(() => {
     const queryParams = getQueryParams();
     const v = queryParams[key];
-    setStateValue(typeof v === 'string' ? v : initial);
-  }, [initial, key]);
+    setStateValue(typeof v === 'string' ? v : defaultValue);
+  }, [defaultValue, key]);
 
   React.useEffect(() => {
     if (!initialized) {
       fetchValue();
       setInitialized(true);
     }
-  }, [fetchValue, initial, initialized, key]);
+  }, [fetchValue, defaultValue, initialized, key]);
 
   React.useEffect(() => {
     if (updateTime > 0) {
@@ -86,4 +84,13 @@ export function setQueryParams(query: queryString.ParsedQuery): void {
     );
     queryParamsEventEmitter.emit('update');
   }
+}
+
+/**
+ * Remove a query param key from the URL entirely.
+ */
+export function clearQueryParam(key: string): void {
+  const queryParams = getQueryParams();
+  delete queryParams[key];
+  setQueryParams(queryParams);
 }

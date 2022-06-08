@@ -24,14 +24,15 @@ const [searchText, setSearchText, initialized] = useQueryParamString('q', '');
 
 ## Signature
 
-`useQueryParamString(key: string, defaultValue: string) => [value, setValue, initialized]`
+`useQueryParamString(key: string, defaultValue: string, clearOnInitial?: boolean) => [value, setValue, initialized, clear]`
 
 ### Props
 
-| Prop         | Type     | Description                                                  |
-| ------------ | -------- | ------------------------------------------------------------ |
-| key          | `string` | The key for the query param.                                 |
-| defaultValue | `string` | Default value when no string is present in the query params. |
+| Prop           | Type     | Description                                                                                                                 |
+| -------------- | -------- | --------------------------------------------------------------------------------------------------------------------------- |
+| key            | `string` | Required. The key for the query param.                                                                                      |
+| defaultValue   | `string` | Required. Default value when no string is present in the query params.                                                      |
+| clearOnDefault | `string` | Optional. When true, the query param is cleared from the URL when the current value equals the default value. Default true. |
 
 ### Return
 
@@ -42,10 +43,11 @@ The hook returns an [array](https://developer.mozilla.org/en-US/docs/Web/JavaScr
 | 0     | value       | `string`                 | The query param string value                                               |
 | 1     | setValue    | `(value: string) ⇒ void` | A setter for the query param value                                         |
 | 2     | initialized | `boolean`                | True after the value has been read from the query params. False otherwise. |
+| 3     | clear       | `() => void`             | Clears the query param from the URL and resets to the default value.       |
 
 ## Utility Functions
 
-You can use the `getQueryParams()` and `setQueryParams()` functions to get/set query params yourself.
+You can use the `getQueryParams()` and `setQueryParams()` functions to get/set query params yourself. You can also clear a query param from the URL with `clearQueryParam()`.
 
 ### `getQueryParams`
 
@@ -83,6 +85,24 @@ import { getQueryParams, setQueryParams } from 'react-use-query-param-string';
 ```jsx
 const params = getQueryParams();
 setQueryParams({ ...params, myParam: 'hey yo!' });
+```
+
+### `clearQueryParam`
+
+Remove a query param key from the URL entirely. Resets to the default value.
+
+#### Signature
+
+`clearQueryParam(key: string) => void`
+
+#### Usage
+
+```jsx
+import { clearQueryParam } from 'react-use-query-param-string';
+```
+
+```jsx
+clearQueryParam('q'); // Clears `q` param from URL.
 ```
 
 ## State Synchronization and Event Emitter
