@@ -87,7 +87,9 @@ exports.getQueryParams = getQueryParams;
  */
 function setQueryParams(query) {
     if (typeof window !== 'undefined') {
-        window.history.replaceState(window.history.state, '', `${window.location.pathname}?${queryString.stringify(query)}`);
+        const hasKeys = Object.keys(query).length > 0;
+        const urlSuffix = hasKeys ? `?${queryString.stringify(query)}` : '';
+        window.history.replaceState(window.history.state, '', `${window.location.pathname}${urlSuffix}`);
         exports.queryParamsEventEmitter.emit('update');
     }
 }
