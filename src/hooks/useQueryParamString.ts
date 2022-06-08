@@ -77,11 +77,9 @@ export function getQueryParams(): queryString.ParsedQuery {
  */
 export function setQueryParams(query: queryString.ParsedQuery): void {
   if (typeof window !== 'undefined') {
-    window.history.replaceState(
-      window.history.state,
-      '',
-      `${window.location.pathname}?${queryString.stringify(query)}`,
-    );
+    const hasKeys = Object.keys(query).length > 0;
+    const urlSuffix = hasKeys ? `?${queryString.stringify(query)}` : '';
+    window.history.replaceState(window.history.state, '', `${window.location.pathname}${urlSuffix}`);
     queryParamsEventEmitter.emit('update');
   }
 }
