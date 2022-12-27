@@ -3,6 +3,7 @@ import * as queryString from 'query-string';
 import { EventEmitter } from 'events';
 
 export const queryParamsEventEmitter = new EventEmitter();
+queryParamsEventEmitter.setMaxListeners(100);
 
 export function useQueryParamString(
   key: string,

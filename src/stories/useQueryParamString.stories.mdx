@@ -126,3 +126,5 @@ const updateListener = () => {
 
 queryParamsEventEmitter.addListener('update', updateListener);
 ```
+
+By default, the event emitter's [max listeners count](https://nodejs.org/api/events.html#emittersetmaxlistenersn) has been set to 100. You can customize this by calling `queryParamsEventEmitter.setMaxListeners()`.
