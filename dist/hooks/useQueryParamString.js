@@ -30,6 +30,7 @@ exports.clearQueryParam = exports.setQueryParams = exports.getQueryParams = expo
 const react_1 = __importDefault(require("react"));
 const queryString = __importStar(require("query-string"));
 const events_1 = require("events");
+const react_sub_unsub_1 = require("react-sub-unsub");
 exports.queryParamsEventEmitter = new events_1.EventEmitter();
 exports.queryParamsEventEmitter.setMaxListeners(100);
 function useQueryParamString(key, defaultValue, clearOnDefault = true) {
@@ -65,13 +66,11 @@ function useQueryParamString(key, defaultValue, clearOnDefault = true) {
         }
     }, [fetchValue, updateTime]);
     react_1.default.useEffect(() => {
-        const updateListener = () => {
+        const subs = new react_sub_unsub_1.Subs();
+        subs.subscribeEvent(exports.queryParamsEventEmitter, 'update', () => {
             setUpdateTime(Date.now());
-        };
-        exports.queryParamsEventEmitter.addListener('update', updateListener);
-        return () => {
-            exports.queryParamsEventEmitter.removeListener('update', updateListener);
-        };
+        });
+        return subs.createCleanup();
     }, []);
     return [value, setValue, initialized, clear];
 }
