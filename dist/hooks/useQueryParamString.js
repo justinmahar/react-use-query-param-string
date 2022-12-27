@@ -31,6 +31,7 @@ const react_1 = __importDefault(require("react"));
 const queryString = __importStar(require("query-string"));
 const events_1 = require("events");
 exports.queryParamsEventEmitter = new events_1.EventEmitter();
+exports.queryParamsEventEmitter.setMaxListeners(100);
 function useQueryParamString(key, defaultValue, clearOnDefault = true) {
     const [initialized, setInitialized] = react_1.default.useState(false);
     const [updateTime, setUpdateTime] = react_1.default.useState(0);
