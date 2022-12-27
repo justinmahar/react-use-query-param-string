@@ -1,6 +1,7 @@
 import React from 'react';
 import * as queryString from 'query-string';
 import { EventEmitter } from 'events';
+import { Subs } from 'react-sub-unsub';
 
 export const queryParamsEventEmitter = new EventEmitter();
 queryParamsEventEmitter.setMaxListeners(100);
@@ -50,13 +51,11 @@ export function useQueryParamString(
   }, [fetchValue, updateTime]);
 
   React.useEffect(() => {
-    const updateListener = () => {
+    const subs = new Subs();
+    subs.subscribeEvent(queryParamsEventEmitter, 'update', () => {
       setUpdateTime(Date.now());
-    };
-    queryParamsEventEmitter.addListener('update', updateListener);
-    return () => {
-      queryParamsEventEmitter.removeListener('update', updateListener);
-    };
+    });
+    return subs.createCleanup();
   }, []);
 
   return [value, setValue, initialized, clear];
