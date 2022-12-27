@@ -56,6 +56,42 @@ You can also use the getQueryParams() and setQueryParams() functions to get/set 
 - **💁‍♀️ Convenience functions available**
   - Use `getQueryParams()` or `setQueryParams()` to get/set query params yourself.
 
+[lock:donate]::🚫---------------------------------------
+
+## Donate 
+
+I hope this project makes your life a little easier! If it does and you'd like to show your appreciation, consider supporting the project with a coffee or sponsorship. 
+
+Your support helps keep the project going and will earn you some serious virtual high fives. Maybe even a virtual fist bump if you're feeling extra cool.
+
+<a href="https://github.com/sponsors/justinmahar">
+  <img src="https://justinmahar.github.io/react-kindling/support/sponsor.png" alt="Sponsor via GitHub" height="35" />
+</a> <a href="https://paypal.me/thejustinmahar/5">
+  <img src="https://justinmahar.github.io/react-kindling/support/coffee-1.png" alt="Buy me a coffee" height="35" />
+</a> <a href="https://paypal.me/thejustinmahar/15">
+  <img src="https://justinmahar.github.io/react-kindling/support/coffee-3.png" alt="Buy me 3 coffees" height="35" />
+</a> <a href="https://paypal.me/thejustinmahar/25">
+  <img src="https://justinmahar.github.io/react-kindling/support/coffee-5.png" alt="Buy me 5 coffees" height="35" />
+</a>
+
+[/lock:donate]::---------------------------------------🚫
+
+## Table of Contents
+
+- [Documentation](#documentation)
+- [Donate](#donate)
+- [Overview](#overview)
+  - [Features include:](#features-include)
+- [Donate](#donate-1)
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [TypeScript](#typescript)
+- [Icon Attribution](#icon-attribution)
+- [Contributing](#contributing)
+- [⭐ Found It Helpful? Star It!](#-found-it-helpful-star-it)
+- [License](#license)
+
 ## Installation
 
 ```
@@ -76,13 +112,23 @@ const [searchText, setSearchText, initialized] = useQueryParamString('q', '');
 
 See the [useQueryParamString docs](https://justinmahar.github.io/react-use-query-param-string/?path=/story/hooks-usequeryparamstring--page) for more usage details, including static functions.
 
+[lock:typescript]::🚫---------------------------------------
+
 ## TypeScript
 
 Type definitions have been included for [TypeScript](https://www.typescriptlang.org/) support.
 
+[/lock:typescript]::---------------------------------------🚫
+
+[lock:icon]::🚫---------------------------------------
+
 ## Icon Attribution
 
-Icon by [Twemoji](https://github.com/twitter/twemoji).
+Favicon by [Twemoji](https://github.com/twitter/twemoji).
+
+[/lock:icon]::---------------------------------------🚫
+
+[lock:contributing]::🚫---------------------------------------
 
 ## Contributing
 
@@ -91,6 +137,8 @@ Open source software is awesome and so are you. 😎
 Feel free to submit a pull request for bugs or additions, and make sure to update tests as appropriate. If you find a mistake in the docs, send a PR! Even the smallest changes help.
 
 For major changes, open an issue first to discuss what you'd like to change.
+
+[/lock:contributing]::---------------------------------------🚫
 
 ## ⭐ Found It Helpful? [Star It!](https://github.com/justinmahar/react-use-query-param-string/stargazers)
 

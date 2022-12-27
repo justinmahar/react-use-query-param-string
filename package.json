@@ -73,5 +73,5 @@
     "query-string": "^7.1.1",
     "react-sub-unsub": "^2.1.6"
   },
-  "coreVersion": "2.2.13"
+  "coreVersion": "2.3.4"
 }
