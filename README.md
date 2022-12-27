@@ -23,22 +23,6 @@
 
 Read the **[official documentation](https://justinmahar.github.io/react-use-query-param-string/)**.
 
-## Donate 
-
-If this project helped out or made your day a little brighter and you'd like to return the favor, why not buy me a coffee or become a sponsor? It'll make my day and help keep the project chugging along. 
-
-Plus, I'll do a little dance in your honor. Maybe not a very good one, but a dance nonetheless.
-
-<a href="https://github.com/sponsors/justinmahar">
-  <img src="https://justinmahar.github.io/react-use-query-param-string/support/sponsor.png" alt="Sponsor via GitHub" height="35" />
-</a> <a href="https://paypal.me/thejustinmahar/5">
-  <img src="https://justinmahar.github.io/react-use-query-param-string/support/coffee-1.png" alt="Buy me a coffee" height="35" />
-</a> <a href="https://paypal.me/thejustinmahar/15">
-  <img src="https://justinmahar.github.io/react-use-query-param-string/support/coffee-3.png" alt="Buy me 3 coffees" height="35" />
-</a> <a href="https://paypal.me/thejustinmahar/25">
-  <img src="https://justinmahar.github.io/react-use-query-param-string/support/coffee-5.png" alt="Buy me 5 coffees" height="35" />
-</a>
-
 ## Overview
 
 This hook allows you to use a query param string the same way you'd use regular React state (i.e. via React.useState). 
@@ -79,10 +63,9 @@ Your support helps keep the project going and will earn you some serious virtual
 ## Table of Contents
 
 - [Documentation](#documentation)
-- [Donate](#donate)
 - [Overview](#overview)
   - [Features include:](#features-include)
-- [Donate](#donate-1)
+- [Donate](#donate)
 - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
