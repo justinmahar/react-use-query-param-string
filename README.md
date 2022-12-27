@@ -25,9 +25,9 @@ Read the **[official documentation](https://justinmahar.github.io/react-use-quer
 
 ## Donate 
 
-This project is the result of countless of hours of work and I really hope it saves you hours of your own precious time.
+This project is the result of countless hours of work and I really hope it saves you hours of your own precious time.
 
-If you would like to join others in showing support for the development of this project, then please feel free to buy me a coffee.
+If this project helped you and you'd like to join others in showing support for the development of this project, I'd be honored if you chose to support the development of this project in one of two ways: by sponsoring me (monthly or one-time), or by buying me a coffee.
 
 <a href="https://github.com/sponsors/justinmahar">
   <img src="https://justinmahar.github.io/react-use-query-param-string/support/sponsor.png" alt="Sponsor via GitHub" height="35" />
