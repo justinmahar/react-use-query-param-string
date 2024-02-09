@@ -1,7 +1,7 @@
 {
   "name": "react-use-query-param-string",
   "version": "2.1.2",
-  "coreVersion": "3.0.5",
+  "coreVersion": "3.0.7",
   "author": "Justin Mahar <contact@justinmahar.com>",
   "description": "React hook for easily getting and setting query param strings.",
   "homepage": "https://justinmahar.github.io/react-use-query-param-string/",
