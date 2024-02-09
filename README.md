@@ -79,7 +79,7 @@ import { useQueryParamString } from 'react-use-query-param-string';
 const [searchText, setSearchText, initialized] = useQueryParamString('q', '');
 ```
 
-See the [useQueryParamString docs](https://justinmahar.github.io/react-use-query-param-string/?path=/story/hooks-usequeryparamstring--page) for more usage details, including static functions.
+See the [useQueryParamString docs](https://justinmahar.github.io/react-use-query-param-string/?path=/story/hooks-usequeryparamstring--docs) for more usage details, including static functions.
 
 <!-- [lock:typescript] 🚫--------------------------------------- -->
 
@@ -115,4 +115,4 @@ If you found this project helpful, let the community know by giving it a [star](
 
 ## License
 
-See [LICENSE.md](https://justinmahar.github.io/react-use-query-param-string/?path=/story/license--page).
+See [LICENSE.md](https://justinmahar.github.io/react-use-query-param-string/?path=/docs/license--docs).
